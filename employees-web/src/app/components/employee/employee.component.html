@@ -1,0 +1,28 @@
+<div class="container">
+  <button routerLink="/form-autor/null" class="btn btn-primary btn-block">Nuevo</button>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Identificación</th>
+      <th scope="col">Nombres</th>
+      <th scope="col">Email</th>
+      <th scope="col">Celular</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor='let autor of autores'>
+      <th>{{autor.idautor}}</th>
+      <td>{{autor.identificacion}}</td>
+      <td>{{autor.nombres}}</td>
+      <td>{{autor.email}}</td>
+      <td>{{autor.celular}}</td>
+      <td>
+        <a class="btn btn-primary btn-sm" routerLink="/form-autor/{{autor.idautor}}">Ver/Editar</a>
+        <a class="btn btn-primary btn-sm btn-danger" (click)="delete(autor.idautor)">Eliminar</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

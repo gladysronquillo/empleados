@@ -1,0 +1,25 @@
+<h2>Crear Autor</h2>
+<div>
+  <div class="form-group">
+    <label for="identificacion">Identificación</label>
+    <input [(ngModel)]="autor.identificacion" type="text" class="form-control" id="identificacion"
+           placeholder="Ingrese la identificación del autor">
+  </div>
+  <div class="form-group">
+    <label for="nombres">Nombre</label>
+    <input [(ngModel)]="autor.nombres" type="text" class="form-control" id="nombres"
+           placeholder="Ingrese los nombres y apellidos del autor">
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input [(ngModel)]="autor.email" type="text" class="form-control" id="email"
+           placeholder="Ingrese el email del autor">
+  </div>
+  <div class="form-group">
+    <label for="celular">Celular</label>
+    <input [(ngModel)]="autor.celular" type="text" class="form-control" id="celular"
+           placeholder="Ingrese el celular del empleado">
+  </div>
+  <button (click)="saveAutor()" class="btn btn-primary btn-block">Guardar</button>
+</div>
+
