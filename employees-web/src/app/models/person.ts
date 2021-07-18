@@ -1,10 +1,7 @@
-export class Usuario {
+export class Person {
   id: number;
+  identification:string;
   names: string;
-  suernames: string;
-  firstName: string;
-  lastName: string;
-  person: any;
-  bandera: number;
-  authdata?: string;
+  surnames: string;
+  email: string;
 }

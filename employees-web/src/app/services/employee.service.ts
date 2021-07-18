@@ -1,31 +1,22 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Autor} from '../interfaces/autor';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
+import {Employee} from '../models/employee';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AutorService {
-  API_ENDPOINT = 'http://192.168.99.100:8090/api';
+export class EmployeeService {
 
   constructor(private httpClient: HttpClient) {
   }
 
-  get() {
-    return this.httpClient.get(this.API_ENDPOINT + '/autor');
+  list() {
+    return this.httpClient.get(`${environment.baseUrl}/employee/listAll`);
   }
 
-  save(autor: Autor) {
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    return this.httpClient.post(this.API_ENDPOINT + '/autor', autor, {headers: headers});
+  save(employee: Employee) {
+    return this.httpClient.post(`${environment.baseUrl}/employee/save`, employee);
   }
 
-  put(autor) {
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    return this.httpClient.put(this.API_ENDPOINT + '/autor/' + autor.idautor, autor, {headers: headers});
-  }
-
-  delete(idautor) {
-    return this.httpClient.delete(this.API_ENDPOINT + '/autor/' + idautor);
-  }
 }

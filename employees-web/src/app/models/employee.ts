@@ -1,10 +1,9 @@
-export class Usuario {
+import {Department} from './department';
+import {Person} from './person';
+
+export class Employee {
   id: number;
-  username: string;
-  password: string;
-  firstName: string;
-  lastName: string;
-  persona: any;
-  bandera: number;
-  authdata?: string;
+  salary: number;
+  person: Person;
+  department: Department;
 }

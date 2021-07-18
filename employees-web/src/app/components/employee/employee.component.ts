@@ -1,22 +1,22 @@
 import {Component, OnInit} from '@angular/core';
-import {AutorService} from "../../services/autor.service";
-import {Autor} from "../../interfaces/autor";
+import {Employee} from '../../models/employee';
+import {EmployeeService} from '../../services/employee.service';
 
 @Component({
-  selector: 'app-autor',
-  templateUrl: './autor.component.html',
-  styleUrls: ['./autor.component.css']
+  selector: 'app-employee',
+  templateUrl: './employee.component.html',
+  styleUrls: ['./employee.component.css']
 })
-export class AutorComponent implements OnInit {
-  autores: Autor[];
+export class EmployeeComponent implements OnInit {
+  employees: Employee[];
 
-  constructor(private autorService: AutorService) {
-    this.getAutores();
+  constructor(private employeeService: EmployeeService) {
+    this.getEmployees();
   }
 
-  getAutores() {
-    this.autorService.get().subscribe((data: Autor[]) => {
-      this.autores = data;
+  getEmployees() {
+    this.employeeService.list().subscribe((data: Employee[]) => {
+      this.employees = data;
     }, (error) => {
       console.log(error);
       alert('ocurrió un error');
@@ -27,7 +27,7 @@ export class AutorComponent implements OnInit {
   }
 
   delete(idautor) {
-    if (confirm('Seguro que deseas eliminar este autor?')) {
+    /*if (confirm('Seguro que deseas eliminar este autor?')) {
       this.autorService.delete(idautor).subscribe((data) => {
         alert('Eliminado con éxito');
         this.getAutores();
@@ -35,6 +35,6 @@ export class AutorComponent implements OnInit {
       }, (error) => {
         console.log(error);
       });
-    }
+    }*/
   }
 }

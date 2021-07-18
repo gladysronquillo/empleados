@@ -1,7 +1,4 @@
-export class Person {
+export class Department {
   id: number;
-  identification:string;
-  names: string;
-  surnames: string;
-  email: string;
+  name: string;
 }
