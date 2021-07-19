@@ -30,9 +30,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public void save(Employee object) {
+	public Employee save(Employee object) {
 		// TODO Auto-generated method stub
-		employeedao.save(object);
+		return employeedao.save(object);
 	}
 
 	@Override

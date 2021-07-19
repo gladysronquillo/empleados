@@ -27,9 +27,9 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	}
 
 	@Override
-	public void save(Employee object) {
+	public Employee save(Employee object) {
 		// TODO Auto-generated method stub
-		employeeRepo.save(object);
+		return employeeRepo.save(object);
 	}
 
 	@Override

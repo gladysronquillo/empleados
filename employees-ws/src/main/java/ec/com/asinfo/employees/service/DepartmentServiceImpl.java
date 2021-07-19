@@ -1,47 +1,47 @@
-package ec.com.asinfo.employees.dao;
+package ec.com.asinfo.employees.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
+import ec.com.asinfo.employees.dao.DepartmentDAO;
 import ec.com.asinfo.employees.models.entity.Department;
-import ec.com.asinfo.employees.repository.DepartmentRepository;
 
-@Repository
-public class DepartmentDAOImpl implements DepartmentDAO {
+@Service
+public class DepartmentServiceImpl implements DepartmentService {
 
 	@Autowired
-	private DepartmentRepository departmentrepo;
+	private DepartmentDAO departmentdao;
 	
 	@Override
 	public List<Department> listAll() {
 		// TODO Auto-generated method stub
-		return departmentrepo.findAll();
+		return departmentdao.listAll();
 	}
 
 	@Override
 	public Department findById(Long id) {
 		// TODO Auto-generated method stub
-		return departmentrepo.findById(id).get();
+		return departmentdao.findById(id);
 	}
 
 	@Override
 	public Department save(Department object) {
 		// TODO Auto-generated method stub
-		return departmentrepo.save(object);
+		return departmentdao.save(object);
 	}
 
 	@Override
 	public void update(Department object) {
 		// TODO Auto-generated method stub
-		departmentrepo.save(object);
+		
 	}
 
 	@Override
 	public void delete(Long id) {
 		// TODO Auto-generated method stub
-		departmentrepo.deleteById(id);
+		
 	}
 
 }

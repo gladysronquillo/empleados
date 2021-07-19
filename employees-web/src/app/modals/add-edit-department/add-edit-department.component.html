@@ -1,0 +1,26 @@
+<form #f="ngForm" class="form-horizontal" role="form" [formGroup]="modalForm">
+  <div class="modal-header">
+    <div class="row text-center">
+      <div class="col-md-12">
+        <h4 class="modal-title" id="modal-basic-title">{{ title }}</h4>
+      </div>
+    </div>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group to-validate">
+          <label class="col-md-3 control-label">Nombre</label>
+          <div class="col-md-12">
+            <input appReactiveValidation formControlName="name" type="text" class="form-control">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-warning btn-rounded" (click)="cancel()">Cerrar</button>
+    <button type="button" class="btn btn-w-m btn-primary" (click)="ok()">{{isEdit ? 'Guardar' :
+      'Agregar'}}</button>
+  </div>
+</form>

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Employee} from '../../models/employee';
-import {EmployeeService} from '../../services/employee.service';
+import {Employee} from '../../../models/employee';
+import {EmployeeService} from '../../../services/employee.service';
 
 @Component({
   selector: 'app-form-employee',
@@ -12,7 +12,8 @@ export class FormEmployeeComponent implements OnInit {
   employee: Employee = {
     id:null,
     salary: null,
-    person: null
+    person: null,
+    department:null
   };
   id: any;
   editing = false;

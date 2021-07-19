@@ -1,6 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {Employee} from '../../models/employee';
-import {EmployeeService} from '../../services/employee.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { LARGE_MODAL, SMALL_MODAL } from 'src/app/core/base-constants';
+import { AddEditDepartmentComponent } from 'src/app/modals/add-edit-department/add-edit-department.component';
+import { AddEditEmployeeComponent } from 'src/app/modals/add-edit-employee/add-edit-employee.component';
+import { Employee } from '../../models/employee';
+import { EmployeeService } from '../../services/employee.service';
 
 @Component({
   selector: 'app-employee',
@@ -8,22 +16,50 @@ import {EmployeeService} from '../../services/employee.service';
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent implements OnInit {
-  employees: Employee[];
 
-  constructor(private employeeService: EmployeeService) {
+  displayedColumns = ['id', 'identification', 'names', 'surnames', 'department', 'actions'];
+  dataSource = new MatTableDataSource<Employee>();
+
+  @ViewChild(MatSort)
+  sort: MatSort = new MatSort;
+
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
+
+  constructor(private employeeService: EmployeeService,
+    private modalService: NgbModal,
+    private snackBar: MatSnackBar) {
+  }
+
+  ngOnInit() {
     this.getEmployees();
+  }
+
+  openAddEditModal() {
+    console.log(1);
+    const modalRef = this.modalService.open(AddEditDepartmentComponent, SMALL_MODAL);
+    modalRef.componentInstance.title = 'Agregar Departamento';
+    modalRef.componentInstance.isEdit = false;
+    modalRef.result.then(
+      (result) => {
+
+      },
+      (reason) => { }
+    );
+  }
+
+  filter(value: string) {
+    this.dataSource.filter = value.trim().toLowerCase();
   }
 
   getEmployees() {
     this.employeeService.list().subscribe((data: Employee[]) => {
-      this.employees = data;
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
     }, (error) => {
-      console.log(error);
       alert('ocurrió un error');
     });
-  }
-
-  ngOnInit() {
   }
 
   delete(idautor) {

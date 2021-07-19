@@ -13,21 +13,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController  
+@CrossOrigin(origins="http://localhost:4200")
 @RequestMapping(value = "api/employee", produces = MediaType.APPLICATION_JSON_VALUE)
-//@RequestMapping("employee")
 public class EmployeeController {
 
 	@Autowired  
 	private EmployeeService employeeservice;
 	
-	@CrossOrigin
 	@GetMapping("/listAll")  
     public List<Employee> listAll() {  
          return employeeservice.listAll();  
           
     }
 	
-	@CrossOrigin
 	@GetMapping("/hello")  
     public String hello() {  
          return "hola mundo";  
