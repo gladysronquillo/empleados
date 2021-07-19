@@ -25,23 +25,22 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 		// TODO Auto-generated method stub
 		return departmentrepo.findById(id).get();
 	}
+	
+	@Override
+	public Department findByName(String name) {
+		return departmentrepo.findByName(name);
+	}
 
 	@Override
 	public Department save(Department object) {
-		// TODO Auto-generated method stub
 		return departmentrepo.save(object);
 	}
 
 	@Override
-	public void update(Department object) {
-		// TODO Auto-generated method stub
-		departmentrepo.save(object);
-	}
-
-	@Override
-	public void delete(Long id) {
+	public boolean delete(Long id) {
 		// TODO Auto-generated method stub
 		departmentrepo.deleteById(id);
+		return Boolean.TRUE;
 	}
 
 }

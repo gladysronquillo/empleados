@@ -51,22 +51,18 @@
     <mat-sidenav #sidenav style="width: 200px" mode="push">
       <img src="assets/icono.png" width="128" style="margin-left: 20px">
 
-      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/buscar" style="cursor: pointer">
-        <mat-icon>search</mat-icon>
-        <span>Buscar</span>
-      </button>
       <mat-divider></mat-divider>
       <button mat-menu-item (click)="sidenav.toggle()" routerLink="/employee" style="cursor: pointer">
         <mat-icon>accessibility</mat-icon>
         <span>Empleados</span>
       </button>
       <mat-divider></mat-divider>
-      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/consulta" style="cursor: pointer">
+      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/department" style="cursor: pointer">
         <mat-icon>insert_drive_file</mat-icon>
         <span>Departamentos</span>
       </button>
       <mat-divider></mat-divider>
-      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/reporte" style="cursor: pointer">
+      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/report" style="cursor: pointer">
         <mat-icon>assessment</mat-icon>
         <span>Reportes</span>
       </button>

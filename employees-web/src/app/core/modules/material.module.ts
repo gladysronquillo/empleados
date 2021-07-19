@@ -23,8 +23,8 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatTableModule} from '@angular/material/table';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { CustomDateAdapter } from './custom-adapter';
-import { MatPaginatorImpl } from './mat-paginator';
+import { CustomDateAdapter } from './material/custom-adapter';
+import { MatPaginatorImpl } from './material/mat-paginator';
 
 @NgModule({
   declarations: [],

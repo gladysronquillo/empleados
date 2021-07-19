@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import ec.com.asinfo.employees.core.util.model.dto.SelectorDTO;
 import ec.com.asinfo.employees.models.entity.Employee;
 import ec.com.asinfo.employees.repository.EmployeeRepository;
 
@@ -22,26 +23,34 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 	@Override
 	public Employee findById(Long id) {
-		// TODO Auto-generated method stub
 		return employeeRepo.findById(id).get();
+	}	
+	
+	@Override
+	public Employee findByIdentification(String identification) {
+		return employeeRepo.findByIdentification(identification);
+	}
+	
+	@Override
+	public List<Employee> findByDepartmentId(Long departmentId) {
+		return employeeRepo.findByDepartmentId(departmentId);
+	}
+	
+	@Override
+	public List<SelectorDTO> findForSelector() {
+		// TODO Auto-generated method stub
+		return employeeRepo.findForSelector();
 	}
 
 	@Override
-	public Employee save(Employee object) {
-		// TODO Auto-generated method stub
+	public Employee save(Employee object) {		
 		return employeeRepo.save(object);
 	}
 
 	@Override
-	public void update(Employee object) {
-		// TODO Auto-generated method stub
-		employeeRepo.save(object);
-	}
-
-	@Override
-	public void delete(Long id) {
-		// TODO Auto-generated method stub
+	public boolean delete(Long id) {
 		employeeRepo.deleteById(id);
+		return Boolean.TRUE;
 	}
 
 }

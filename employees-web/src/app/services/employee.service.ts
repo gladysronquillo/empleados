@@ -15,6 +15,14 @@ export class EmployeeService {
     return this.httpClient.get(`${environment.baseUrl}/employee/listAll`);
   }
 
+  findForSelector() {
+    return this.httpClient.get(`${environment.baseUrl}/employee/findForSelector`);
+  }
+
+  delete(id: number) {
+    return this.httpClient.get(`${environment.baseUrl}/employee/delete/` + id);
+  }
+
   save(employee: Employee) {
     return this.httpClient.post(`${environment.baseUrl}/employee/save`, employee);
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { SweetAlertService } from 'src/app/core/services/sweet.service';
+import { Department } from 'src/app/models/department';
 import { DepartmentService } from 'src/app/services/department.service';
 
 @Component({
@@ -13,6 +14,7 @@ export class AddEditDepartmentComponent implements OnInit {
 
   title: string;
   isEdit = false;
+  department: Department;
   modalForm: FormGroup = this.initForm();
 
   constructor(private activeModal: NgbActiveModal,
@@ -20,6 +22,9 @@ export class AddEditDepartmentComponent implements OnInit {
     private departmentService: DepartmentService) { }
 
   ngOnInit() {
+    if (this.department != null) {
+      this.modalForm.patchValue(this.department);
+    }
   }
 
   cancel() {
@@ -27,21 +32,26 @@ export class AddEditDepartmentComponent implements OnInit {
   }
 
   ok() {
-    this.sweetAlertService.confirm({
-      message: '¿Se guardará?.',
-      title: ' '
-    },
-    (scope: AddEditDepartmentComponent, resolve) => {
-      resolve();
-      scope.sweetAlertService.close();
-      scope.departmentService.save(this.modalForm.value).subscribe(data => {
-        if (data != null) {
-          scope.cancel();
-          scope.sweetAlertService.success();
-        }
-      });
-    }, this, (scope: AddEditDepartmentComponent) => {
-    });
+    if (this.modalForm.valid) {
+      this.sweetAlertService.confirm({
+        message: 'Se guardará la información',
+        title: '¿Está seguro?'
+      },
+        (scope: AddEditDepartmentComponent, resolve) => {
+          resolve();
+          scope.sweetAlertService.close();
+          scope.departmentService.save(this.modalForm.value).subscribe(data => {
+            if (data != null) {
+              scope.cancel();
+              scope.sweetAlertService.success();
+            }
+          });
+        }, this, (scope: AddEditDepartmentComponent) => {
+        });
+    } else {
+console.log('gladys');
+
+    }
   }
 
   private initForm() {

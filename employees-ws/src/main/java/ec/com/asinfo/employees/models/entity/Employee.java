@@ -31,12 +31,18 @@ public class Employee extends Base {
 	protected Person person;
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
-	@JoinColumn(name = "supervisor")
+	@JoinColumn(name = "supervisor", insertable = false, updatable = false)
 	private Employee supervisor;
 	
+	@Column(name = "supervisor", nullable = true)
+	private Long supervisorId;
+	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
-	@JoinColumn(name = "deparmento")
+	@JoinColumn(name = "departamento", insertable = false, updatable = false)
 	private Department department;
+	
+	@Column(name = "departamento", nullable = false)
+	private Long departmentId;
 
 	public BigDecimal getSalary() {
 		return salary;
@@ -68,6 +74,22 @@ public class Employee extends Base {
 
 	public void setDepartment(Department department) {
 		this.department = department;
+	}
+
+	public Long getSupervisorId() {
+		return supervisorId;
+	}
+
+	public Long getDepartmentId() {
+		return departmentId;
+	}
+
+	public void setSupervisorId(Long supervisorId) {
+		this.supervisorId = supervisorId;
+	}
+
+	public void setDepartmentId(Long departmentId) {
+		this.departmentId = departmentId;
 	}
 	
 

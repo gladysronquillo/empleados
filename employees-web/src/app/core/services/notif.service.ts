@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import {NOTIFY_TIME} from '../core.constants';
+import { NOTIFY_TIME } from '../base-constants';
 
 @Injectable({
   providedIn: 'root'

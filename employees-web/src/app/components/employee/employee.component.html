@@ -1,13 +1,13 @@
 <router-outlet></router-outlet>
 
+<button mat-button color="accent" (click)="openAddEditModal(null)">
+  <mat-icon>person_add</mat-icon>
+</button>
 <div class="example-header">
   <mat-form-field>
     <input matInput (keyup)="filter($event.target.value)" placeholder="Buscar Empleado">
   </mat-form-field>
 </div>
-<button mat-button color="accent" (click)="openAddEditModal()">
-  <mat-icon>person_add</mat-icon>
-</button>
 <mat-table #table [dataSource]="dataSource" matSort>
 
   <ng-container matColumnDef="id">
@@ -30,15 +30,25 @@
     <mat-cell *matCellDef="let row">{{row.person.surnames}}</mat-cell>
   </ng-container>
 
+  <ng-container matColumnDef="email">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Correo </mat-header-cell>
+    <mat-cell *matCellDef="let row">{{row.person.email}}</mat-cell>
+  </ng-container>
+
   <ng-container matColumnDef="department">
     <mat-header-cell *matHeaderCellDef mat-sort-header> Departamento </mat-header-cell>
     <mat-cell *matCellDef="let row">{{row.department.name}}</mat-cell>
   </ng-container>
 
+  <ng-container matColumnDef="supervisor">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Supervisor </mat-header-cell>
+    <mat-cell *matCellDef="let row">{{row.supervisor?.person?.fullName}}</mat-cell>
+  </ng-container>
+
   <ng-container matColumnDef="actions">
     <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
     <mat-cell *matCellDef="let row">
-      <button mat-button color="primary" [routerLink]="['edit', row.id]">
+      <button mat-button color="primary" (click)="openAddEditModal(row)">
         <mat-icon>edit</mat-icon>
       </button>
       <button mat-button color="accent" (click)="delete(row.id)">

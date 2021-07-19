@@ -1,4 +1,77 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import "~@ng-select/ng-select/themes/default.theme.css";
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.to-validate.label-required label.control-label:before,
+.to-validate.label-required label.control-label:before,
+.to-validate .label-required label.control-label:before {
+    content: "*";
+}
+
+.to-validate.label-required label:before,
+.to-validate.label-required label:before,
+.to-validate .label-required label:before {
+    content: "*";
+}
+
+.form-group.to-validate.label-required label.control-label:after,
+.form-group .to-validate.label-required label.control-label:after,
+.form-group .to-validate .label-required label.control-label:after {
+    content: ":";
+}
+
+label.check-label:after {
+    content: none!important;
+}
+
+form label:after,
+label:after {
+    content: ":";
+}
+
+.has-error .form-control, .has-error .form-control:focus, .has-error .ng-select-container, .has-error .ng-select-container:focus {
+    border-color: red;
+}
+
+.has-error label {
+    color: red;
+}
+
+.btn.next-label {
+    margin-top: 25px;
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+    white-space: normal !important;
+}
+
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+  }
+  
+  .ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+  }
+  
+  .alert div {
+    background-color: #fed3d3;
+    color: #820000;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: .5rem;
+  }
+  
+  select {
+    width: 100%;
+    padding: .5rem;
+  }

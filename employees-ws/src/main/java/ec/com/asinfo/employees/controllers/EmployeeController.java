@@ -1,5 +1,6 @@
 package ec.com.asinfo.employees.controllers;
 
+import ec.com.asinfo.employees.core.util.model.dto.SelectorDTO;
 import ec.com.asinfo.employees.models.entity.Employee;
 import ec.com.asinfo.employees.service.EmployeeService;
 
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,12 +26,16 @@ public class EmployeeController {
 	@GetMapping("/listAll")  
     public List<Employee> listAll() {  
          return employeeservice.listAll();  
+    }
+	
+	@GetMapping("/findForSelector")  
+    public List<SelectorDTO> findForSelector() {  
+         return employeeservice.findForSelector();  
           
     }
 	
-	@GetMapping("/hello")  
-    public String hello() {  
-         return "hola mundo";  
-          
+	@PostMapping("/save")  
+    public Employee save(@RequestBody Employee employee) {  
+        return employeeservice.save(employee);            
     }
 }

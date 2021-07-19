@@ -7,19 +7,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmployeeComponent } from './components/employee/employee.component';
-import { FormEmployeeComponent } from './components/employee/form-employee/form-employee.component';
 import { HomeComponent } from './components/home/home.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MaterialModule } from './material/material.module';
+import { MaterialModule } from './core/modules/material.module';
 import {NgbActiveModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 import { AddEditDepartmentComponent } from './modals/add-edit-department/add-edit-department.component';
+import { ToastrModule } from 'ngx-toastr';
+import { DepartmentComponent } from './components/department/department.component';
+import { AddEditEmployeeComponent } from './modals/add-edit-employee/add-edit-employee.component';
+import { CoreModule } from './core/modules/core.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     EmployeeComponent,
-    FormEmployeeComponent,
+    DepartmentComponent,
+    AddEditEmployeeComponent,
     AddEditDepartmentComponent
   ],
   imports: [
@@ -27,10 +31,10 @@ import { AddEditDepartmentComponent } from './modals/add-edit-department/add-edi
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule,
-    ReactiveFormsModule,
+    CoreModule,
     FormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ToastrModule.forRoot(),
   ],
   providers: [NgbActiveModal,
     NgbModalConfig],

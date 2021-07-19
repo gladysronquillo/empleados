@@ -4,4 +4,5 @@ import ec.com.asinfo.employees.models.entity.Department;
 
 public interface DepartmentDAO extends CRUD<Department>{
 
+	Department findByName(String name);
 }

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ToastrService} from 'ngx-toastr';
-import {MESSAGES} from '../core.constants';
 import Swal from 'sweetalert2';
+import { MESSAGES } from '../base-constants';
 
 @Injectable({
   providedIn: 'root'

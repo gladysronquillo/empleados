@@ -1,0 +1,41 @@
+<router-outlet></router-outlet>
+
+<button mat-button color="accent" (click)="openAddEditModal(null)">
+  <mat-icon>business_center</mat-icon>
+</button>
+<div class="example-header">
+  <mat-form-field>
+    <input matInput (keyup)="filter($event.target.value)" placeholder="Buscar Departamento">
+  </mat-form-field>
+</div>
+<mat-table #table [dataSource]="dataSource" matSort>
+
+  <ng-container matColumnDef="id">
+    <mat-header-cell fxFlex="5%" *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+    <mat-cell fxFlex="5%" *matCellDef="let row">{{row.id}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="name" class="text-center">
+    <mat-header-cell fxFlex="85%" *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+    <mat-cell fxFlex="85%" *matCellDef="let row">{{row.name}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell fxFlex="10%" *matHeaderCellDef>Acciones</mat-header-cell>
+    <mat-cell fxFlex="10%" *matCellDef="let row">
+      <button mat-button color="primary" (click)="openAddEditModal(row)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-button color="accent" (click)="delete(row.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns:displayedColumns;"></mat-row>
+
+</mat-table>
+
+<mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>

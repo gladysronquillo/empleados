@@ -1,3 +1,74 @@
-<p>
-  add-edit-employee works!
-</p>
+<form #f="ngForm" class="form-horizontal" role="form" [formGroup]="modalForm" appReactiveOnSubmit>
+  <div class="modal-header">
+    <div class="row text-center">
+      <div class="col-md-12">
+        <h4 class="modal-title" id="modal-basic-title">{{ title }}</h4>
+      </div>
+    </div>
+  </div>
+  <div class="modal-body">
+    <div class="row" formGroupName="person">
+      <div class="col-md-6">
+        <div class="form-group to-validate">
+          <label class="col-md-3 control-label">Nombres</label>
+          <div class="col-md-12">
+            <input appReactiveValidation formControlName="names" type="text" class="form-control">
+          </div>
+        </div>
+        <div class="form-group to-validate">
+          <label class="col-md-3 control-label">Identificación</label>
+          <div class="col-md-12">
+            <input appReactiveValidation formControlName="identification" type="text" class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group to-validate">
+          <label class="col-md-3 control-label">Apellidos</label>
+          <div class="col-md-12">
+            <input appReactiveValidation formControlName="surnames" type="text" class="form-control">
+          </div>
+        </div>
+        <div class="form-group to-validate">
+          <label class="col-md-3 control-label">Correo</label>
+          <div class="col-md-12">
+            <input appReactiveValidation formControlName="email" type="text" class="form-control">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group to-validate">
+          <label class="col-md-3 control-label">Salario</label>
+          <div class="col-md-12">
+            <input appReactiveValidation formControlName="salary" type="text" class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group to-validate">
+          <label class="col-md-3 control-label">Departamento</label>
+          <div class="col-md-12">
+            <ng-select name="departmentId" [items]="departments" bindLabel="name" bindValue="id"
+              formControlName="departmentId" placeholder="Seleccione..."></ng-select>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group to-validate">
+          <label class="col-md-3 control-label">Supervisor</label>
+          <div class="col-md-12">
+            <ng-select name="supervisorId" [items]="supervisors" bindLabel="name" bindValue="id"
+              formControlName="supervisorId" placeholder="Seleccione..."></ng-select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-warning btn-rounded" (click)="cancel()">Cerrar</button>
+    <button type="button" class="btn btn-w-m btn-primary" (click)="ok()">{{isEdit ? 'Guardar' :
+      'Agregar'}}</button>
+  </div>
+</form>

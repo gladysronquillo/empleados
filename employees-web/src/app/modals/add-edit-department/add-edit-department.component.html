@@ -1,4 +1,4 @@
-<form #f="ngForm" class="form-horizontal" role="form" [formGroup]="modalForm">
+<form #f="ngForm" class="form-horizontal" role="form" [formGroup]="modalForm" appReactiveOnSubmit>
   <div class="modal-header">
     <div class="row text-center">
       <div class="col-md-12">
@@ -12,7 +12,7 @@
         <div class="form-group to-validate">
           <label class="col-md-3 control-label">Nombre</label>
           <div class="col-md-12">
-            <input appReactiveValidation formControlName="name" type="text" class="form-control">
+            <input appReactiveValidation formControlName="name" type="text" class="form-control" required>
           </div>
         </div>
       </div>
