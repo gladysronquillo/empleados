@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { SweetAlertService } from 'src/app/core/services/sweet.service';
+import { DepartmentService } from 'src/app/services/department.service';
 
 @Component({
   selector: 'app-add-edit-department',
@@ -33,7 +34,7 @@ export class AddEditDepartmentComponent implements OnInit {
     (scope: AddEditDepartmentComponent, resolve) => {
       resolve();
       scope.sweetAlertService.close();
-      scope.studentRegistrationService.acceptContracts({id: this.registrationStudentId}).subscribe(data => {
+      scope.departmentService.save(this.modalForm.value).subscribe(data => {
         if (data != null) {
           scope.cancel();
           scope.sweetAlertService.success();
