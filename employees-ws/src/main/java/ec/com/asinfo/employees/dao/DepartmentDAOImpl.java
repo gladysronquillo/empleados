@@ -13,19 +13,17 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 
 	@Autowired
 	private DepartmentRepository departmentrepo;
-	
+
 	@Override
 	public List<Department> listAll() {
-		// TODO Auto-generated method stub
 		return departmentrepo.findAll();
 	}
 
 	@Override
 	public Department findById(Long id) {
-		// TODO Auto-generated method stub
 		return departmentrepo.findById(id).get();
 	}
-	
+
 	@Override
 	public Department findByName(String name) {
 		return departmentrepo.findByName(name);
@@ -38,7 +36,6 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 
 	@Override
 	public boolean delete(Long id) {
-		// TODO Auto-generated method stub
 		departmentrepo.deleteById(id);
 		return Boolean.TRUE;
 	}

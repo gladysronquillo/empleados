@@ -32,4 +32,9 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long>  {
 			+ "FROM Employee e "
 			+ "WHERE e.department.id = :departmentId ")
 	List<Employee> findByDepartmentId(Long departmentId);
+	
+	@Query("SELECT e "
+			+ "FROM Employee e "
+			+ "WHERE e.supervisor.id = :supervidorId ")
+	List<Employee> findBySupervisorId(Long supervidorId);
 }

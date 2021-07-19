@@ -2,6 +2,9 @@ package ec.com.asinfo.employees.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +33,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 	
 	@Override
+	public List<Employee> findBySupervisorId(Long supervisorId) {
+		return employeedao.findBySupervisorId(supervisorId);
+	}
+	
+	@Override
 	public List<SelectorDTO> findForSelector() {
 		return employeedao.findForSelector();
 	}
@@ -43,6 +51,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 				found.setSalary(object.getSalary());
 				found.setDepartmentId(object.getDepartmentId());
 				found.setSupervisorId(object.getSupervisorId());
+				found.getPerson().setEmail(object.getPerson().getEmail());
 				object = found;
 			}
 		}
@@ -50,8 +59,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
+	@Transactional
 	public boolean delete(Long id) {		
-		return Boolean.TRUE;
+		List<Employee> employees = employeedao.findBySupervisorId(id);
+		if(CollectionUtils.isNotEmpty(employees)) {
+			return Boolean.FALSE;
+		}else {
+			Employee employee = employeedao.findById(id);
+			employee.setStatus(Boolean.FALSE);
+			return Boolean.TRUE;
+		}	
 	}
 
 }

@@ -37,6 +37,11 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	}
 	
 	@Override
+	public List<Employee> findBySupervisorId(Long supervisorId) {
+		return employeeRepo.findBySupervisorId(supervisorId);
+	}
+	
+	@Override
 	public List<SelectorDTO> findForSelector() {
 		// TODO Auto-generated method stub
 		return employeeRepo.findForSelector();
